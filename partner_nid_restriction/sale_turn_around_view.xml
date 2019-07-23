@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="turn_around_time_extended_tree_view_ext" model="ir.ui.view">
+            <field name="name">turn_around_time.report.tree.ext</field>
+            <field name="model">turn_around_time.report</field>
+            <field name="inherit_id" ref="sale_stock.turn_around_time_extended_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/tree/field[@name='patient_id']" position="attributes">
+                    <attribute name="string">NID</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
+
+
+
