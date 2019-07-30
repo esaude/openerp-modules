@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="lang_en" model="res.lang">
+            <field name="code">pt_PT</field>
+            <field name="name">Portuguese / Português</field>
+            <field name="translatable">True</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+</openerp>
+
+
+
