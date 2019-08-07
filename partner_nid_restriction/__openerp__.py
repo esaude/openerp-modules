@@ -8,7 +8,7 @@
 """,
     'author': 'Satvix Informatics',
     'website': 'http://www.satvix.com',
-    'depends': ['sale_stock'],
+    'depends': ['sale_stock','poc_user_config'],
     'category': 'Sale',
     'data': [
         'sale_turn_around_view.xml',

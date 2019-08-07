@@ -29,6 +29,7 @@ from openerp.tools.translate import _
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP, float_compare
 import openerp.addons.decimal_precision as dp
 from openerp import netsvc
+import datetime
 
 
 class res_partner(osv.osv):
@@ -36,13 +37,19 @@ class res_partner(osv.osv):
 
     def create(self, cr, uid, vals, context=None):
         result = super(res_partner, self).create(cr, uid, vals, context=context)
-        print "\n\n==========result",result
         partner_obj = self.browse(cr,uid,result,context=context)
         if partner_obj.ref:
             ref_data = partner_obj.ref.split('/')
             if len(ref_data) == 4:
                 if len(ref_data[0]) != 8 or len(ref_data[1]) != 2 or len(ref_data[2]) != 4 or len(ref_data[3]) != 5:
                     raise osv.except_osv(_('Error!'), _('NID format is invalid !'))
+                else:
+                    year = int(ref_data[2])
+                    now = datetime.datetime.now()
+                    if year > now.year:
+                        raise osv.except_osv(_('Error!'), _('NID format is invalid ! \n You can not add year greater than current year !'))
+                        #raise osv.except_osv(_('Error!'), _('NID format is invalid ! \n You added year is %s. Year must be less than Or equal to %s !')%(year,now.year))
+                
             else:
                 raise osv.except_osv(_('Error!'), _('NID format is invalid !'))
         return result
@@ -54,6 +61,12 @@ class res_partner(osv.osv):
             if len(ref_data) == 4:
                 if len(ref_data[0]) != 8 or len(ref_data[1]) != 2 or len(ref_data[2]) != 4 or len(ref_data[3]) != 5:
                     raise osv.except_osv(_('Error!'), _('NID format is invalid !'))
+                else:
+                    year = int(ref_data[2])
+                    now = datetime.datetime.now()
+                    if year > now.year:
+                        raise osv.except_osv(_('Error!'), _('NID format is invalid ! \n You can not add year greater than current year !'))
+
             else:
                 raise osv.except_osv(_('Error!'), _('NID format is invalid !'))
         return super(res_partner, self).write(cr, uid, ids, vals, context=context)
