@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="print_button">
+        <t t-jquery=".oe_web_example" t-operation="append">
+            <span>TESTTTTTT</span>
+            <button name="print" type="object" class="oe_highlight" id="print-bill-button" accesskey="P">Print21122</button>
+        </t>
+    </t>
+
+</templates>
