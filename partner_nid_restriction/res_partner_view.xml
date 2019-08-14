@@ -9,7 +9,7 @@
                 <xpath expr="//sheet/notebook/page[3]/group/group[3]/field[@name='ref']" position="replace">
                 </xpath>
                 <xpath expr="//sheet/group/group/field[@name='function']" position="before">
-                    <field name="ref" string="NID"/>
+                    <field name="ref" string="NID" required="True"/>
                 </xpath>
             </field>
         </record>
