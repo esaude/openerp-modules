@@ -4,10 +4,10 @@
     'version':'1.0',
     'category' : 'base',
     'summary': 'POC Fields Modifier' ,
-    'description' : """This module help to hide unnecessary fields from the view.""",
+    'description' : """This module help to hide unnecessary fields and menus from the view.""",
     'author':'Satvix Informatics',
     'website':'https://www.satvix.com/',
-    'depends':['sale','bahmni_sale_discount','bahmni_atom_feed'],
+    'depends':['sale','bahmni_sale_discount','bahmni_atom_feed','hr','account','mail'],
     'data': [
         'sale_view.xml',
     ],
