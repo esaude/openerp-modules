@@ -7,17 +7,16 @@ class module(osv.osv):
     _inherit = 'ir.module.module'
 
     def write(self, cr, uid, ids, vals, context=None):
-        print"\n vals",vals
         if vals.has_key('state') and vals.get('state'):
             if vals.get('state') == 'installed':
-                print("vals.get('state')",vals.get('state'))
+                #print("vals.get('state')",vals.get('state'))
                 #Messaging
                 messaging_ids = self.pool.get('ir.translation').search(cr, uid, [('module','=','mail'),
                                                                  ('type','=','model'),
                                                                  ('name','=','ir.ui.menu,name'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Messaging')], context=context)
-                print"Messaging : ",messaging_ids
+                #print"Messaging : ",messaging_ids
                 if messaging_ids:
                     cr.execute('DELETE FROM ir_translation WHERE id in %s', (tuple(messaging_ids),))
 
@@ -27,7 +26,7 @@ class module(osv.osv):
                                                                  ('name','=','purchase.order'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Send by EMail')], context=context)
-                print("translation_id for Send by EMail Button",translation_id)
+                #print("translation_id for Send by EMail Button",translation_id)
                 if translation_id:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (translation_id))
 
@@ -37,7 +36,7 @@ class module(osv.osv):
                                                                  ('name','=','purchase.order'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Confirm Order')], context=context)
-                print("confirm_btn_id for Confirm Order Button",confirm_btn_id)
+                #print("confirm_btn_id for Confirm Order Button",confirm_btn_id)
                 if confirm_btn_id:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (confirm_btn_id)) 
 
@@ -47,7 +46,7 @@ class module(osv.osv):
                                                                  ('name','=','purchase.order,warehouse_id'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Destination Warehouse')], context=context)
-                print("destination_warehouse_id for Destination Warehouse ",destination_warehouse_id)
+                #print("destination_warehouse_id for Destination Warehouse ",destination_warehouse_id)
                 if destination_warehouse_id:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (destination_warehouse_id))
 
@@ -58,7 +57,7 @@ class module(osv.osv):
                                                                  ('name','=','ir.ui.menu,name'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','On Draft Invoices')], context=context)
-                print("on_draft_invoices_id On Draft Invoicesfor",on_draft_invoices_id)
+                #print("on_draft_invoices_id On Draft Invoicesfor",on_draft_invoices_id)
                 if on_draft_invoices_id:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (on_draft_invoices_id))
 
@@ -68,7 +67,7 @@ class module(osv.osv):
                                                                  ('name','=','ir.ui.menu,name'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','On Purchase Order Lines')], context=context)
-                print("on_purchase_order_lines for On Purchase Order Lines ",on_purchase_order_lines)
+                #print("on_purchase_order_lines for On Purchase Order Lines ",on_purchase_order_lines)
                 if on_purchase_order_lines:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (on_purchase_order_lines))
 
@@ -78,7 +77,7 @@ class module(osv.osv):
                                                                  ('name','=','ir.ui.menu,name'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','On Incoming Shipments')], context=context)
-                print("on_incoming_shipments for On Incoming Shipments : ",on_incoming_shipments)
+                #print("on_incoming_shipments for On Incoming Shipments : ",on_incoming_shipments)
                 if on_incoming_shipments:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (on_incoming_shipments))
 
@@ -88,7 +87,7 @@ class module(osv.osv):
                                                                  ('name','=','purchase.order'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Customer Address')], context=context)
-                print("Customer Address : ",customer_address)
+                #print("Customer Address : ",customer_address)
                 if customer_address:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (customer_address))
 
@@ -98,7 +97,7 @@ class module(osv.osv):
                                                                  ('name','=','purchase.order,invoiced'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Invoice Received')], context=context)
-                print("Invoice Received : ",invoice_received)
+                #print("Invoice Received : ",invoice_received)
                 if invoice_received:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (invoice_received))
 
@@ -108,7 +107,7 @@ class module(osv.osv):
                                                                  ('name','=','purchase.order,payment_term_id'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Payment Term')], context=context)
-                print("Payment Term : ",payment_term)
+                #print("Payment Term : ",payment_term)
                 if payment_term:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (payment_term))
 
@@ -119,7 +118,7 @@ class module(osv.osv):
                                                                  ('name','=','purchase.order'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Receive Invoice')], context=context)
-                print("Receive Invoice : ",receive_invoice)
+                #print("Receive Invoice : ",receive_invoice)
                 if receive_invoice:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (receive_invoice))
 
@@ -129,7 +128,7 @@ class module(osv.osv):
                                                                  ('name','=','purchase.order'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Purchase Order ')], context=context)
-                print("Purchase Order  : ",purchase_order)
+                #print("Purchase Order  : ",purchase_order)
                 if purchase_order:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (purchase_order))
 
@@ -140,7 +139,7 @@ class module(osv.osv):
                                                                  ('name','=','purchase.order'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Request for Quotation ')], context=context)
-                print("Request for Quotation : ",rfq)
+                #print("Request for Quotation : ",rfq)
                 if rfq:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (rfq))
                 
@@ -150,7 +149,7 @@ class module(osv.osv):
                                                                  ('name','=','ir.actions.act_window,name'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Unit of Measure Categories')], context=context)
-                print("Unit of Measure Categories : ",unit_of_measure_categories)
+                #print("Unit of Measure Categories : ",unit_of_measure_categories)
                 if unit_of_measure_categories:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (unit_of_measure_categories))
 
@@ -160,7 +159,7 @@ class module(osv.osv):
                                                                  ('name','=','ir.ui.menu,name'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Unit of Measure Categories')], context=context)
-                print("Unit of Measure Categories 2: ",unit_of_measure_categories_2)
+                #print("Unit of Measure Categories 2: ",unit_of_measure_categories_2)
                 if unit_of_measure_categories_2:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (unit_of_measure_categories_2))
                     
@@ -174,8 +173,24 @@ class module(osv.osv):
                 if receive_button:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (receive_button))
                     
+                #Subtotal field from the Sale Order Line
+                so_subtotal_field = self.pool.get('ir.translation').search(cr, uid, [('module','=','sale'),
+                                                                 ('type','=','field'),
+                                                                 ('name','=','sale.order.line,price_subtotal'),
+                                                                 ('lang','=','pt_PT'),
+                                                                 ('src','=','Subtotal')], context=context)
+                if so_subtotal_field:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Sub Total',tuple(so_subtotal_field)))
                     
-
+                #Subtotal field from the Purchase Order Line
+                po_subtotal_field = self.pool.get('ir.translation').search(cr, uid, [('module','=','purchase'),
+                                                                 ('type','=','field'),
+                                                                 ('name','=','purchase.order.line,price_subtotal'),
+                                                                 ('lang','=','pt_PT'),
+                                                                 ('src','=','Subtotal')], context=context)
+                if po_subtotal_field:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Sub Total',tuple(po_subtotal_field)))
+                    
         return super(module, self).write(cr, uid, ids, vals, context=context)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
