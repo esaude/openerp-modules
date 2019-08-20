@@ -29,7 +29,7 @@ msgstr "Provedor :"
 #. module: bahmni_sale_discount
 #: field:sale.order,provider_name:0
 msgid "Provider Name"
-msgstr "Provedor"
+msgstr "Nome do Provedor"
 
 #. module: bahmni_stock_batch_sale_price
 #: view:sale.order:0
@@ -48,7 +48,7 @@ msgstr "​Data de Validade"
 #: field:sale.order.line,batch_id:0
 #: field:sale.order.line,batch_name:0
 msgid "Batch No"
-msgstr "Lote não."
+msgstr "Num. Lote"
 
 #. module: sale
 #: field:sale.order.line,price_subtotal:0
@@ -180,7 +180,7 @@ msgstr "Receber Factura"
 #. module: purchase
 #: view:purchase.order:0
 msgid "Purchase Order "
-msgstr "Pedido de​ ​Compra"
+msgstr "Pedido de Compra"
 
 #. module: purchase
 #: view:purchase.order:0
