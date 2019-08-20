@@ -48,7 +48,6 @@ class res_partner(osv.osv):
                     now = datetime.datetime.now()
                     if year > now.year:
                         raise osv.except_osv(_('Error!'), _('NID format is invalid ! \n You can not add year greater than current year !'))
-                        #raise osv.except_osv(_('Error!'), _('NID format is invalid ! \n You added year is %s. Year must be less than Or equal to %s !')%(year,now.year))
                 
             else:
                 raise osv.except_osv(_('Error!'), _('NID format is invalid !'))
