@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="print_button">
+        <t t-jquery="#print-summary-bill-button" t-operation="replace" />
+        <t t-jquery="#print-bill-latest-prescription" t-operation="replace" />
+    </t>
+</templates>

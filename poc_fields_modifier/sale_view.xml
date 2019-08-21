@@ -45,7 +45,7 @@
                 <tree string="Quotation" fonts="bold:message_unread==True" colors="grey:state=='cancel';blue:state in ('waiting_date','manual');red:state in ('invoice_except','shipping_except')">
                     <field name="message_unread" invisible="1"/>
                     <field name="name" string="Order Number"/>
-                    <field name="date_order"/>
+                    <field name="datetime_order" string="Date Time of Lifting"/>
                     <field name="partner_id"/>
                     <field name="provider_name"/>
                     <field name="user_id" invisible="1"/>
@@ -89,7 +89,7 @@
                 <tree string="Sales Orders" fonts="bold:message_unread==True" colors="grey:state=='cancel';blue:state in ('waiting_date','manual');red:state in ('invoice_except','shipping_except')">
                     <field name="message_unread" invisible="1"/>
                     <field name="name" string="Order Number"/>
-                    <field name="date_order"/>
+                    <field name="datetime_order" string="Date Time of Lifting"/>
                     <field name="partner_id"/>
                     <field name="provider_name"/>
                     <field name="user_id" invisible="1"/>
@@ -117,6 +117,21 @@
                 OpenERP will help you efficiently handle the complete sales flow:
                 quotation, sales order, delivery, invoicing and payment.
               </p>
+            </field>
+        </record>
+        
+        <!--Hide Unreconcile button from the Customer Payment View-->
+        <record id="view_vendor_receipt_form_hide_button" model="ir.ui.view">
+            <field name="name">account.voucher.receipt.form.hidebutton</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_receipt_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[2]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+			    <xpath expr="//header/button[3]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
             </field>
         </record>
         
