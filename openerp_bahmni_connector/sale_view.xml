@@ -21,7 +21,7 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//sheet/group/group/field[@name='partner_id']" position="after">
-				    <field name="location_name"/>
+				    <field name="location_name" invisible="1"/>
 			    </xpath>
             </field>
         </record>

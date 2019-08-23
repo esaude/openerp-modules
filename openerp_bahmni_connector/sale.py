@@ -195,46 +195,38 @@ class sale_order(osv.osv):
                         # For concept ID
                         cursor.execute("select concept_id from concept_name where name='dispensed'")
                         concept_result = cursor.fetchone()
-                        # For Person Attribute Type
-                        cursor.execute("select person_attribute_type_id from person_attribute_type where name='PATIENT_STATUS'")
-                        person_attribute_result = cursor.fetchone()
-                        # For TARV Concept ID
-                        cursor.execute("select concept_id from concept_name where name='TARV'")
-                        tarv_concept_result = cursor.fetchone()
-                        # For TPRE-ARV Concept ID
-                        cursor.execute("select concept_id from concept_name where name='Pre TARV'")
-                        pretarv_concept_result = cursor.fetchone()
-                        
                         
                         
                         # For Orders
-                        cursor.execute("SELECT patient_id,encounter_id,order_id,creator,voided from orders where uuid='%s'"%line.external_order_id)
+                        cursor.execute("SELECT patient_id,encounter_id,order_id,creator,voided,order_type_id from orders where uuid='%s'"%line.external_order_id)
                         order_result = cursor.fetchone()
                         
-                        # For update Person Attributes
-                        cursor.execute("update person_attribute set value=%d where person_id=%d and person_attribute_type_id=%d and value=%d"%(tarv_concept_result[0],order_result[0],person_attribute_result[0],pretarv_concept_result[0]))
+                        # For Order Type
+                        cursor.execute("SELECT name from order_type where order_type_id='%d'"%order_result[5])
+                        order_type_name = cursor.fetchone()
+                        if order_type_name[0] == 'Drug Order':
                         
-                        # For update Person UUID
-                        cursor.execute("SELECT uuid from person where person_id='%d'"%order_result[0])
-                        person_uuid_result = cursor.fetchone()
-                        
-                        location_name = ''
-                        if sale_order_obj.location_name:
-                            location_name = sale_order_obj.location_name
-                        
-                        # For Location ID
-                        cursor.execute("SELECT location_id from location where name='%s'"%location_name)
-                        location_name_result = cursor.fetchone()
-                        
-                        
-                        
-                        if order_result and location_name_result:
-                            # Insert in OBS Table
-                            cursor.execute("INSERT INTO obs(person_id,concept_id,encounter_id,order_id,obs_datetime,status,uuid,creator, date_created,voided,value_coded,location_id) values (%d,%d,%d,%d,now(),'FINAL',UUID(),%d,now(),%d,1,%d) " %(order_result[0],concept_result[0],order_result[1],order_result[2],order_result[3],order_result[4],location_name_result[0]))
-                            # Insert into ERPDrug_Order
+                            # For update Person UUID
+                            #cursor.execute("SELECT uuid from person where person_id='%d'"%order_result[0])
+                            #person_uuid_result = cursor.fetchone()
                             
-                            cursor.execute("INSERT INTO erpdrug_order(order_id,patient_id,dispensed,arvdispensed,firstArvdispensed,dispenseddate,encounter_id,location_id,creator,date_created,uuid) values (%d,%d,%s,%s,%s,now(),%d,%d,%d,now(),UUID())" %(order_result[2],order_result[0],dispensed,arvdispensed,arvdispensed,order_result[1],location_name_result[0],order_result[3]))
-                            db.commit()
+                            location_name = ''
+                            if sale_order_obj.location_name:
+                                location_name = sale_order_obj.location_name
+                            
+                            # For Location ID
+                            cursor.execute("SELECT location_id from location where name='%s'"%location_name)
+                            location_name_result = cursor.fetchone()
+                            
+                            
+                            
+                            if order_result and location_name_result:
+                                # Insert in OBS Table
+                                cursor.execute("INSERT INTO obs(person_id,concept_id,encounter_id,order_id,obs_datetime,status,uuid,creator, date_created,voided,value_coded,location_id) values (%d,%d,%d,%d,now(),'FINAL',UUID(),%d,now(),%d,1,%d) " %(order_result[0],concept_result[0],order_result[1],order_result[2],order_result[3],order_result[4],location_name_result[0]))
+                                # Insert into ERPDrug_Order
+                                
+                                cursor.execute("INSERT INTO erpdrug_order(order_id,patient_id,dispensed,arvdispensed,firstArvdispensed,dispenseddate,encounter_id,location_id,creator,date_created,uuid) values (%d,%d,%s,%s,%s,now(),%d,%d,%d,now(),UUID())" %(order_result[2],order_result[0],dispensed,arvdispensed,arvdispensed,order_result[1],location_name_result[0],order_result[3]))
+                                db.commit()
         except MySQLdb.Error, e:
             _logger.error("Error %d: %s" % (e.args[0], e.args[1]))
         finally:
