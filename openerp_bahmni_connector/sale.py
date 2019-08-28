@@ -222,14 +222,13 @@ class sale_order(osv.osv):
                                 
                                 status_result = cursor.execute("SELECT patient_state from patient_status_state where id='%d'"%latest_status_id)
                                 last_patient_state = cursor.fetchone()
-                                if last_status[0] != 'TARV' and last_patient_state[0] != 'ACTIVE':
-                                    if (last_status[0] == 'Pre TARV' and last_patient_state == 'ACTIVE')  or (last_status[0] == 'TARV' and last_patient_state == 'RESTART'):
-                                        cursor.execute("INSERT INTO patient_status_state(patient_id,patient_state,patient_status,creator,date_created) values (%d,'ACTIVE','TARV',%d,now()) " %(order_result[0],order_result[3]))
-                                    if (last_status[0] == 'TARV' and last_patient_state == 'ABANDONED') or (last_status[0] == 'TARV' and last_patient_state == 'SUSPENDED'):
-                                        cursor.execute("INSERT INTO patient_status_state(patient_id,patient_state,patient_status,creator,date_created) values (%d,'RESTART','TARV',%d,now()) " %(order_result[0],order_result[3]))
+                                
+                                if (last_patient_state[0] == 'ACTIVE' and last_status[0] == 'Pre TARV') or (last_patient_state[0] == 'RESTART' and last_status[0] == 'TARV'):
+                                    cursor.execute("INSERT INTO patient_status_state(patient_id,patient_state,patient_status,creator,date_created) values (%d,'ACTIVE','TARV',%d,now()) " %(order_result[0],order_result[3]))
+                                if (last_patient_state[0] == 'ABANDONED' and last_status[0] == 'TARV') or (last_patient_state[0] == 'SUSPENDED' and last_status[0] == 'TARV'):
+                                    cursor.execute("INSERT INTO patient_status_state(patient_id,patient_state,patient_status,creator,date_created) values (%d,'RESTART','TARV',%d,now()) " %(order_result[0],order_result[3]))
                                     
                                 
-                            
                             location_name = ''
                             if sale_order_obj.location_name:
                                 location_name = sale_order_obj.location_name
