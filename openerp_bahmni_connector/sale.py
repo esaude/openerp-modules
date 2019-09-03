@@ -246,7 +246,7 @@ class sale_order(osv.osv):
                                 cursor.execute("INSERT INTO obs(person_id,concept_id,encounter_id,order_id,obs_datetime,status,uuid,creator, date_created,voided,value_coded,location_id) values (%d,%d,%d,%d,now(),'FINAL',UUID(),%d,now(),%d,1,%d) " %(order_result[0],concept_result[0],order_result[1],order_result[2],order_result[3],order_result[4],location_name_result[0]))
                                 # Insert into ERPDrug_Order
                                 
-                                cursor.execute("INSERT INTO erpdrug_order(order_id,patient_id,dispensed,arv_dispensed,first_arv_dispensed,dispensed_date,encounter_id,location_id,creator,date_created,uuid) values (%d,%d,%s,%s,%s,now(),%d,%d,%d,now(),UUID())" %(order_result[2],order_result[0],dispensed,arvdispensed,arvdispensed,order_result[1],location_name_result[0],order_result[3]))
+                                cursor.execute("INSERT INTO erpdrug_order(order_id,patient_id,dispensed,arv_dispensed,first_arv_dispensed,dispensed_date,encounter_id,location_id,creator,date_created,uuid) values (%d,%d,%s,%s,%s,now(),%d,%d,%d,now(),UUID())" %(order_result[2],order_result[0],dispensed,arvdispensed,firstArvdispensed,order_result[1],location_name_result[0],order_result[3]))
                                 db.commit()
         except MySQLdb.Error, e:
             _logger.error("Error %d: %s" % (e.args[0], e.args[1]))
