@@ -225,10 +225,10 @@ class sale_order(osv.osv):
                                     status_result = cursor.execute("SELECT patient_state from patient_status_state where id='%d'"%latest_status_id)
                                     last_patient_state = cursor.fetchone()
                                     
-                                    if (last_patient_state[0] == 'ACTIVE' and last_status[0] == 'Pre TARV') or (last_patient_state[0] == 'RESTART' and last_status[0] == 'TARV'):
+                                    if (last_patient_state[0] == 'ACTIVE' and last_status[0] == 'Pre TARV') or (last_patient_state[0] == 'ACTIVE' and last_status[0] == 'TARV_RESTART'):
                                         cursor.execute("INSERT INTO patient_status_state(patient_id,patient_state,patient_status,creator,date_created) values (%d,'ACTIVE','TARV',%d,now()) " %(order_result[0],order_result[3]))
-                                    if (last_patient_state[0] == 'ABANDONED' and last_status[0] == 'TARV') or (last_patient_state[0] == 'SUSPENDED' and last_status[0] == 'TARV'):
-                                        cursor.execute("INSERT INTO patient_status_state(patient_id,patient_state,patient_status,creator,date_created) values (%d,'RESTART','TARV',%d,now()) " %(order_result[0],order_result[3]))
+                                    if (last_patient_state[0] == 'ABANDONED' and last_status[0] == 'TARV') or (last_patient_state[0] == 'ACTIVE' and last_status[0] == 'TARV_TREATMENT_SUSPENDED'):
+                                        cursor.execute("INSERT INTO patient_status_state(patient_id,patient_state,patient_status,creator,date_created) values (%d,'ACTIVE','TARV_RESTART',%d,now()) " %(order_result[0],order_result[3]))
                                     
                                 
                             location_name = ''
@@ -246,7 +246,7 @@ class sale_order(osv.osv):
                                 cursor.execute("INSERT INTO obs(person_id,concept_id,encounter_id,order_id,obs_datetime,status,uuid,creator, date_created,voided,value_coded,location_id) values (%d,%d,%d,%d,now(),'FINAL',UUID(),%d,now(),%d,1,%d) " %(order_result[0],concept_result[0],order_result[1],order_result[2],order_result[3],order_result[4],location_name_result[0]))
                                 # Insert into ERPDrug_Order
                                 
-                                cursor.execute("INSERT INTO erpdrug_order(order_id,patient_id,dispensed,arv_dispensed,first_arv_dispensed,dispensed_date,encounter_id,location_id,creator,date_created,uuid) values (%d,%d,%s,%s,%s,now(),%d,%d,%d,now(),UUID())" %(order_result[2],order_result[0],dispensed,arvdispensed,arvdispensed,order_result[1],location_name_result[0],order_result[3]))
+                                cursor.execute("INSERT INTO erpdrug_order(order_id,patient_id,dispensed,arv_dispensed,first_arv_dispensed,dispensed_date,encounter_id,location_id,creator,date_created,uuid) values (%d,%d,%s,%s,%s,now(),%d,%d,%d,now(),UUID())" %(order_result[2],order_result[0],dispensed,arvdispensed,firstArvdispensed,order_result[1],location_name_result[0],order_result[3]))
                                 db.commit()
         except MySQLdb.Error, e:
             _logger.error("Error %d: %s" % (e.args[0], e.args[1]))
