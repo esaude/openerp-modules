@@ -387,3 +387,16 @@ msgstr "Chefe da conta de desconto"
 msgid "Discount %"
 msgstr "Desconto (%)"
 
+
+#. module: bahmni_purchase_extension
+#: field:product.supplierinfo,manufacturer:0
+#: field:purchase.order.line,manufacturer:0
+#: report:purchase.purchase_order_ext:0
+msgid "Manufacturer"
+msgstr "Produzido por"
+
+#. module: bahmni_internal_stock_move
+#: field:stock.move,stock_available:0
+msgid "Balance"
+msgstr "Saldo"
+

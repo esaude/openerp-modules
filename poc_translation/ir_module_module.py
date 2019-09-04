@@ -2,6 +2,8 @@
 
 from openerp.osv import fields, osv
 from openerp import pooler
+import logging
+_logger = logging.getLogger(__name__)
 
 class module(osv.osv):
     _inherit = 'ir.module.module'
@@ -191,7 +193,7 @@ class module(osv.osv):
                 if po_subtotal_field:
                     cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Sub Total',tuple(po_subtotal_field)))
  
-                 #2160201 Email
+                #2160201 Email
                 email = self.pool.get('ir.translation').search(cr, uid, [('module','=','base'),
                                                                  ('type','=','field'),
                                                                  ('name','=','res.partner,email'),
@@ -200,6 +202,15 @@ class module(osv.osv):
                 print("\n email",email)
                 if email:
                     cr.execute('DELETE FROM ir_translation WHERE id = %s', (email))
+                    
+                #2160201 Email
+                partner_email = self.pool.get('ir.translation').search(cr, uid, [('module','=','poc_translation'),
+                                                                 ('type','=','field'),
+                                                                 ('name','=','res.partner,email'),
+                                                                 ('lang','=','pt_PT'),
+                                                                 ('src','=','Email')], context=context)
+                if partner_email:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Correio Electrónico',tuple(partner_email)))
                 
 
                 #Customer Payment Term
@@ -287,9 +298,19 @@ class module(osv.osv):
                                                                  ('name','=','stock.picking,auto_picking'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Auto-Picking')], context=context)
-                print("\n auto_picking",auto_picking)
+                _logger.error("\n\n=======auto_picking=======%s",auto_picking)
                 if auto_picking:
-                    cr.execute('DELETE FROM ir_translation WHERE id = %s', (auto_picking))
+                    #cr.execute('DELETE FROM ir_translation WHERE id = %s', (auto_picking))
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Escolha automática',tuple(auto_picking)))
+
+                #Auto-Picking / Picking auto#stock.picking,auto_picking
+                auto_picking_2 = self.pool.get('ir.translation').search(cr, uid, [('module','=','poc_translation'),
+                                                                 ('type','=','field'),
+                                                                 ('name','=','stock.picking,auto_picking'),
+                                                                 ('lang','=','pt_PT'),
+                                                                 ('src','=','Auto-Picking')], context=context)
+                if auto_picking_2:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Escolha automática',tuple(auto_picking_2)))
 
                 #Auto-Picking / Picking auto
                 auto_picking_in = self.pool.get('ir.translation').search(cr, uid, [('module','=','stock'),
@@ -297,9 +318,23 @@ class module(osv.osv):
                                                                  ('name','=','stock.picking.in,auto_picking'),
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Auto-Picking')], context=context)
-                print("\n auto_picking_in",auto_picking_in)
+                #print("\n auto_picking_in",auto_picking_in)
+                #_logger.error("\n\n=======auto_picking_in=======%s",auto_picking_in)
                 if auto_picking_in:
-                    cr.execute('DELETE FROM ir_translation WHERE id = %s', (auto_picking_in))
+                    #cr.execute('DELETE FROM ir_translation WHERE id = %s', (auto_picking_in))
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Escolha automática',tuple(auto_picking_in)))
+
+
+                #Auto-Picking / Picking auto #stock.picking.in,auto_picking
+                auto_picking_in_2 = self.pool.get('ir.translation').search(cr, uid, [('module','=','poc_translation'),
+                                                                 ('type','=','field'),
+                                                                 ('name','=','stock.picking.in,auto_picking'),
+                                                                 ('lang','=','pt_PT'),
+                                                                 ('src','=','Auto-Picking')], context=context)
+                if auto_picking_in_2:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Escolha automática',tuple(auto_picking_in_2)))
+
+
 
                 #Auto-Picking / Picking auto
                 auto_picking_out = self.pool.get('ir.translation').search(cr, uid, [('module','=','stock'),
@@ -308,9 +343,23 @@ class module(osv.osv):
                                                                  ('lang','=','pt_PT'),
                                                                  ('src','=','Auto-Picking')], context=context)
                 print("\n auto_picking_out",auto_picking_out)
+                _logger.error("\n\n=======auto_picking_out=======%s",auto_picking_out)
                 if auto_picking_out:
-                    cr.execute('DELETE FROM ir_translation WHERE id = %s', (auto_picking_out))
+                    #cr.execute('DELETE FROM ir_translation WHERE id = %s', (auto_picking_out))
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Escolha automática',tuple(auto_picking_out)))
                     
+
+                #Auto-Picking / Picking auto #stock.picking.out,auto_picking
+                auto_picking_out_2 = self.pool.get('ir.translation').search(cr, uid, [('module','=','poc_translation'),
+                                                                 ('type','=','field'),
+                                                                 ('name','=','stock.picking.out,auto_picking'),
+                                                                 ('lang','=','pt_PT'),
+                                                                 ('src','=','Auto-Picking')], context=context)
+                if auto_picking_out_2:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Escolha automática',tuple(auto_picking_out_2)))
+
+
+
                 #Destination Warehouse in On incoming shipment
                 d_w = self.pool.get('ir.translation').search(cr, uid, [('module','=','purchase'),
                                                                  ('type','=','field'),
@@ -530,6 +579,16 @@ class module(osv.osv):
                                                                  ('src','=','Incoming  Products')], context=context)
                 if incoming_product_action:
                     cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Produtos recebidos',tuple(incoming_product_action)))
+                    
+                
+                #Incoming Shipments & Invoices #2148365
+                i_s_i = self.pool.get('ir.translation').search(cr, uid, [('module','=','purchase'),
+                                                                ('type','=','view'),
+                                                                ('name','=','purchase.order'),
+                                                                ('lang','=','pt_PT'),
+                                                                ('src','=','Incoming Shipments & Invoices')], context=context)
+                if i_s_i:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Remessas e Facturas recebidas',tuple(i_s_i)))
 
 
         return super(module, self).write(cr, uid, ids, vals, context=context)
