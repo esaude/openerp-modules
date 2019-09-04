@@ -227,7 +227,7 @@ class sale_order(osv.osv):
                                     
                                     if (last_patient_state[0] == 'ACTIVE' and last_status[0] == 'Pre TARV') or (last_patient_state[0] == 'ACTIVE' and last_status[0] == 'TARV_RESTART'):
                                         cursor.execute("INSERT INTO patient_status_state(patient_id,patient_state,patient_status,creator,date_created) values (%d,'ACTIVE','TARV',%d,now()) " %(order_result[0],order_result[3]))
-                                    if (last_patient_state[0] == 'ABANDONED' and last_status[0] == 'TARV') or (last_patient_state[0] == 'ACTIVE' and last_status[0] == 'TARV_TREATMENT_SUSPENDED'):
+                                    if (last_patient_state[0] == 'ACTIVE' and last_status[0] == 'TARV_ABANDONED') or (last_patient_state[0] == 'ACTIVE' and last_status[0] == 'TARV_TREATMENT_SUSPENDED'):
                                         cursor.execute("INSERT INTO patient_status_state(patient_id,patient_state,patient_status,creator,date_created) values (%d,'ACTIVE','TARV_RESTART',%d,now()) " %(order_result[0],order_result[3]))
                                     
                                 
