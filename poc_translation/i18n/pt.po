@@ -400,3 +400,67 @@ msgstr "Produzido por"
 msgid "Balance"
 msgstr "Saldo"
 
+#. modules: account, base, stock
+#: model:ir.ui.menu,name:account.menu_account_customer
+#: model:ir.ui.menu,name:account.menu_finance_receivables
+#: model:ir.actions.act_window,name:base.action_partner_customer_form
+#: model:ir.actions.act_window,name:base.action_partner_form
+#: model:ir.ui.menu,name:base.menu_partner_form
+#: view:res.partner:0
+#: model:stock.location,name:stock.stock_location_customers
+msgid "Customers"
+msgstr "Pacientes"
+
+#. modules: purchase, portal_sale, sale
+#: model:ir.actions.act_window,name:portal_sale.action_quotations_portal
+#: model:ir.ui.menu,name:portal_sale.portal_quotations
+#: model:ir.actions.act_window,name:purchase.purchase_rfq
+#: model:ir.ui.menu,name:purchase.menu_purchase_rfq
+#: view:purchase.order:0
+#: view:purchase.report:0
+#: model:ir.actions.act_window,name:sale.action_quotations
+#: model:ir.ui.menu,name:sale.menu_sale_quotations
+#: view:sale.order:0
+#: view:sale.report:0
+msgid "Quotations"
+msgstr "Prescrições"
+
+#. modules: portal_sale, poc_fields_modifier, sale
+#: view:sale.order:0
+#: model:ir.ui.menu,name:portal_sale.portal_sales_orders
+#: model:ir.actions.act_window,name:sale.action_orders
+#: model:ir.ui.menu,name:sale.menu_sale_order
+#: view:sale.order:0
+msgid "Sales Orders"
+msgstr "Prescrições Dispensadas"
+
+#. module: bahmni_sale_discount
+#. openerp-web
+#: code:addons/bahmni_sale_discount/static/src/xml/link.xml:5
+#, python-format
+msgid "Latest Prescription"
+msgstr "Prescrição mais recente"
+
+#. modules: web, web_kanban, bahmni_web_extensions
+#. openerp-web
+#: code:addons/bahmni_web_extensions/static/src/js/addSerialNumberToListView.js:84
+#: code:addons/web/static/src/js/view_list.js:1355
+#: code:addons/web_kanban/static/src/js/kanban.js:539
+#, python-format
+msgid "Undefined"
+msgstr "não definido"
+
+#. module: account_voucher
+#: view:account.invoice:0
+msgid "Register Payment"
+msgstr "Registar Pagamento"
+
+#. module: account
+#: model:mail.message.subtype,description:account.mt_invoice_validated
+msgid "Invoice validated"
+msgstr "Validação da prescrição"
+
+#. module: account
+#: model:mail.message.subtype,description:account.mt_invoice_paid
+msgid "Invoice paid"
+msgstr "Dispensa de medicação"
