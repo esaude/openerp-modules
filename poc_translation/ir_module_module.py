@@ -5,6 +5,20 @@ from openerp import pooler
 import logging
 _logger = logging.getLogger(__name__)
 
+
+
+class mail_message(osv.osv):
+    _inherit = 'mail.message'
+    
+    # For change the Document Created body message
+    def create(self, cr, uid, vals, context=None):
+        if vals.has_key('body') and vals.get('body') == 'Document created':
+            vals.update({'body': 'Documento criado'})
+        result = super(mail_message, self).create(cr, uid, vals, context=context)
+        return result
+    
+mail_message()
+
 class module(osv.osv):
     _inherit = 'ir.module.module'
 
@@ -589,6 +603,91 @@ class module(osv.osv):
                                                                 ('src','=','Incoming Shipments & Invoices')], context=context)
                 if i_s_i:
                     cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Remessas e Facturas recebidas',tuple(i_s_i)))
+                
+                
+                #Customers
+                customers = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Customers')], context=context)
+                if customers:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Pacientes',tuple(customers)))
+                    
+                # Only Customer
+                customer_id = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Customer')], context=context)
+                if customer_id:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Paciente',tuple(customer_id)))
+
+                #Quotations
+                quotations_menu = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Quotations')], context=context)
+                if customers:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescrições',tuple(quotations_menu)))
+                    
+                # Only Quotation
+                quotation_id = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Quotation')], context=context)
+                if quotation_id:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescriçõe',tuple(quotation_id)))
+
+                #Quotations "#
+                quotations_str = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Quotation ')], context=context)
+                if quotations_str:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescriçõe',tuple(quotations_str)))
+
+                #Request for Quotation "#
+                rfq_str = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Request for Quotation ')], context=context)
+                if rfq_str:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Pedido de Prescriçõe',tuple(rfq_str)))
+
+
+                #Sales Orders
+                Sales_Orders = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Sales Orders')], context=context)
+                if Sales_Orders:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescrições Dispensadas',tuple(Sales_Orders)))
+                    
+                # Sales Order
+                sales_order_id = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Sales Order')], context=context)
+                if sales_order_id:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescrições Dispensada',tuple(sales_order_id)))
+
+                #Sales Order "
+                sales_order_str = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Sales Order ')], context=context)
+                if sales_order_str:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescrições Dispensada',tuple(sales_order_str)))
+
+                #sales
+                sales_menu = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Sales')], context=context)
+                if sales_menu:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Dispensa',tuple(sales_menu)))
+
+                #Register Payment button
+                reg_payment = self.pool.get('ir.translation').search(cr, uid, [('module','=','account_voucher'),
+                                                                ('type','=','view'),
+                                                                ('name','=','account.invoice'),
+                                                                ('lang','=','pt_PT'),
+                                                                ('src','=','Register Payment')], context=context)
+                if reg_payment:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Registar pagamento',tuple(reg_payment)))
+
+                #Register Payment button
+                Invoice_validated = self.pool.get('ir.translation').search(cr, uid, [('module','=','account'),
+                                                                ('type','=','model'),
+                                                                ('name','=','mail.message.subtype,description'),
+                                                                ('lang','=','pt_PT'),
+                                                                ('src','=','Invoice validated')], context=context)
+                if Invoice_validated:
+                    cr.execute('DELETE FROM ir_translation WHERE id = %s', (Invoice_validated))
+                    
+                
+                #Update the Invoice paid and Validate message
+                invoice_validated_message = self.pool.get('mail.message.subtype').search(cr, uid, [('res_model','=','account.invoice'),
+                                                                ('description','=','Invoice validated'),('name','=','Validated')], context=context)
+                if invoice_validated_message:
+                    cr.execute('UPDATE mail_message_subtype set description=%s WHERE id in %s', ('Validação da prescrição',tuple(invoice_validated_message)))
+                    
+                invoice_paid_message = self.pool.get('mail.message.subtype').search(cr, uid, [('res_model','=','account.invoice'),
+                                                                ('description','=','Invoice paid'),('name','=','Paid')], context=context)
+                if invoice_paid_message:
+                    cr.execute('UPDATE mail_message_subtype set description=%s WHERE id in %s', ('Dispensa de medicação',tuple(invoice_paid_message)))
+                    
+
+
 
 
         return super(module, self).write(cr, uid, ids, vals, context=context)
