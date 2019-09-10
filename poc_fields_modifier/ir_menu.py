@@ -33,3 +33,20 @@ class ir_ui_menu(osv.osv):
             args.append(('id', 'child_of', menu_ids))
         return super(ir_ui_menu, self).search(cr, uid, args, offset=offset, limit=limit, order=order, context=context, count=count)
 
+class product_category(osv.osv):
+    _inherit = "product.category"
+
+    def name_get(self, cr, uid, ids, context=None):
+        if isinstance(ids, (list, tuple)) and not len(ids):
+            return []
+        if isinstance(ids, (long, int)):
+            ids = [ids]
+        reads = self.read(cr, uid, ids, ['name','parent_id'], context=context)
+        res = []
+        for record in reads:
+            name = record['name']
+            #if record['parent_id']:
+            #    name = record['parent_id'][1]+' / '+name
+            res.append((record['id'], name))
+        return res
+product_category()
