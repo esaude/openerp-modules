@@ -123,6 +123,30 @@
             </field>
         </record>
         
+        <!--Hide Print button from the Customer Payment View-->
+        <record id="jss_invoice_form_add_discount_hidebutton2" model="ir.ui.view">
+            <field name="name">account.voucher.receipt.form.hidebutton2</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="bahmni_print_bill.jss_invoice_form_add_discount"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
+        <!--Hide Print button from the Customer Payment View-->
+        <record id="jss_invoice_form_add_discount_hidebutton1" model="ir.ui.view">
+            <field name="name">account.voucher.receipt.form.hidebutton1</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="print_receipt.jss_invoice_form_add_discount"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='voucher_print']" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
         <!--Hide Unreconcile button from the Customer Payment View-->
         <record id="view_vendor_receipt_form_hide_button" model="ir.ui.view">
             <field name="name">account.voucher.receipt.form.hidebutton</field>
