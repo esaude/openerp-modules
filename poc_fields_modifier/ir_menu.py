@@ -11,7 +11,13 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FO
 import openerp.addons.decimal_precision as dp
 from openerp import netsvc
 import datetime
+
+class sale_order(osv.osv):
+    _inherit = 'sale.order'
     
+    _defaults = {
+        'name': '',
+    }
 
 class ir_ui_menu(osv.osv):
     _inherit = 'ir.ui.menu'
