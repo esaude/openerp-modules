@@ -34,7 +34,7 @@
 				    <attribute name="invisible">1</attribute>
 			    </xpath>
 			    <xpath expr="//sheet/h1/label[1]" position="attributes">
-				    <attribute name="invisible">1</attribute>
+				    <attribute name="attrs">{'invisible': [('name','=',' ')]}</attribute>
 			    </xpath>
             </field>
         </record>
@@ -161,6 +161,7 @@
 			    </xpath>
             </field>
         </record>
+        
         
     </data>
 </openerp>
