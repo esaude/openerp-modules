@@ -16,7 +16,7 @@ class sale_order(osv.osv):
     _inherit = 'sale.order'
     
     _defaults = {
-        'name': '',
+        'name': lambda obj, cr, uid, context: ' ',
     }
 
 class ir_ui_menu(osv.osv):
