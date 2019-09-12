@@ -162,6 +162,22 @@
             </field>
         </record>
         
+        <!-- Invoicing,Human Resources and Messaging menu access right -->
+        <menuitem name="Invoicing"
+            id="account.menu_finance"
+            groups="base.group_system"
+            sequence="50"/>
+            
+        <menuitem name="Human Resources"
+            id="hr.menu_hr_root"
+            groups="base.group_system"
+            sequence="90"/>
+            
+        <menuitem name="Messaging"
+          id="mail.mail_feeds_main"
+          groups="base.group_system"
+          sequence="10"/>
+        
         
     </data>
 </openerp>
