@@ -623,17 +623,17 @@ class module(osv.osv):
                 # Only Quotation
                 quotation_id = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Quotation')], context=context)
                 if quotation_id:
-                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescriçõe',tuple(quotation_id)))
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescrição',tuple(quotation_id)))
 
                 #Quotations "#
                 quotations_str = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Quotation ')], context=context)
                 if quotations_str:
-                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescriçõe',tuple(quotations_str)))
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescrição',tuple(quotations_str)))
 
                 #Request for Quotation "#
                 rfq_str = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Request for Quotation ')], context=context)
                 if rfq_str:
-                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Pedido de Prescriçõe',tuple(rfq_str)))
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Pedido de Prescrição',tuple(rfq_str)))
 
 
                 #Sales Orders
