@@ -162,6 +162,52 @@
             </field>
         </record>
         
+        <!--Hide Ruppes Currency Symbol from Customer Invoice-->
+        <record id="invoice_form_add_discount_hideruppes" model="ir.ui.view">
+            <field name="name">account.invoice.form.hideruppes</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="bahmni_sale_discount.invoice_form_add_discount"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[3]/span[1]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+			    <xpath expr="//div[4]/span[1]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
+        <!--Hide Ruppes Currency Symbol from Supplier Invoice-->
+        <record id="view_account_invoice_discount_form_hideruppes" model="ir.ui.view">
+            <field name="name">account.invoice.form.hideruppes</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="bahmni_sale_discount.view_account_invoice_discount_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[3]/span[1]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+			    <xpath expr="//div[4]/span[1]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
+        <!-- Invoicing,Human Resources and Messaging menu access right -->
+        <menuitem name="Invoicing"
+            id="account.menu_finance"
+            groups="base.group_system"
+            sequence="50"/>
+            
+        <menuitem name="Human Resources"
+            id="hr.menu_hr_root"
+            groups="base.group_system"
+            sequence="90"/>
+            
+        <menuitem name="Messaging"
+          id="mail.mail_feeds_main"
+          groups="base.group_system"
+          sequence="10"/>
+        
         
     </data>
 </openerp>
