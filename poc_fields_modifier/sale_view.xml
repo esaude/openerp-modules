@@ -34,7 +34,7 @@
 				    <attribute name="invisible">1</attribute>
 			    </xpath>
 			    <xpath expr="//sheet/h1/label[1]" position="attributes">
-				    <attribute name="attrs">{'invisible': [('name','=',' ')]}</attribute>
+				    <attribute name="attrs">{'invisible': ['|',('name','=',' '),('state','not in',('draft','sent'))]}</attribute>
 			    </xpath>
             </field>
         </record>
