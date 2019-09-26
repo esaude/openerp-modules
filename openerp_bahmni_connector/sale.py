@@ -235,18 +235,19 @@ class sale_order(osv.osv):
             firstArvdispensed = 0 
             
             sale_order_obj = self.browse(cr,uid,ids[0])
-            pre_order_ids = self.search(cr,uid,[('partner_id', '=', sale_order_obj.partner_id.id)],context=context)
+            pre_order_ids = self.search(cr,uid,[('partner_id', '=', sale_order_obj.partner_id.id),('id','!=',sale_order_obj.id)],context=context)
             pre_order_lines = self.pool.get('sale.order.line').search(cr, uid, [('order_id','in',pre_order_ids)], context=context)
             arv_count = 0
+
             for line in self.pool.get('sale.order.line').browse(cr, uid, pre_order_lines, context=context):
                 if line.product_id.categ_id.is_arv:
-                    arv_count += 1
-            if arv_count > 1:
-                firstArvdispensed = 0
-            elif arv_count == 1:
-                firstArvdispensed = 1
-            else:
-                firstArvdispensed = 0
+                    arv_count = 1
+                           
+            for line in sale_order_obj.order_line:
+                if line.product_id.categ_id.is_arv and arv_count == 1: 
+                    firstArvdispensed = 0
+                if line.product_id.categ_id.is_arv and arv_count == 0:
+                    firstArvdispensed = 1
            
             
             if sale_order_obj.order_line:
