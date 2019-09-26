@@ -147,6 +147,62 @@ class order_save_service(osv.osv):
         else:
             raise osv.except_osv(('Error!'), ("Patient Id not found in openerp"))
 
+    def _create_sale_order_line_function(self, cr, uid, name, sale_order, order, context=None):
+
+        stored_prod_ids = self._get_product_ids(cr, uid, order, context=context)
+
+        if(stored_prod_ids):
+            prod_id = stored_prod_ids[0]
+            prod_obj = self.pool.get('product.product').browse(cr, uid, prod_id)
+            sale_order_line_obj = self.pool.get('sale.order.line')
+            prod_lot = sale_order_line_obj.get_available_batch_details(cr, uid, prod_id, sale_order, context=context)
+
+            actual_quantity = order['quantity']
+            comments = " ".join([str(actual_quantity), str(order.get('quantityUnits', None))])
+
+            default_quantity_object = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'bahmni_sale_discount', 'group_default_quantity')[1]
+            default_quantity_total = self.pool.get('res.groups').browse(cr, uid, default_quantity_object, context=context)
+            default_quantity_value = 1
+            if default_quantity_total and len(default_quantity_total.users) > 0:
+                default_quantity_value = -1
+
+            order['quantity'] = self._get_order_quantity(cr, uid, order, default_quantity_value)
+            product_uom_qty = order['quantity']
+            if(prod_lot != None and order['quantity'] > prod_lot.future_stock_forecast):
+                product_uom_qty = prod_lot.future_stock_forecast
+
+            sale_order_line = {
+                'product_id': prod_id,
+                'price_unit': prod_obj.list_price,
+                'comments': comments,
+                'product_uom_qty': product_uom_qty,
+                'quantity_total': product_uom_qty,
+                'product_uom': prod_obj.uom_id.id,
+                'order_id': sale_order.id,
+                'external_id':order['encounterId'],
+                'external_order_id':order['orderId'],
+                'name': prod_obj.name,
+                'type': 'make_to_stock',
+                'state': 'draft',
+                'dispensed_status': order.get('dispensed', False)
+
+            }
+
+            if prod_lot != None:
+                life_date = prod_lot.life_date and datetime.strptime(prod_lot.life_date, tools.DEFAULT_SERVER_DATETIME_FORMAT)
+                sale_order_line['price_unit'] = prod_lot.sale_price if prod_lot.sale_price > 0.0 else sale_order_line['price_unit']
+                sale_order_line['batch_name'] = prod_lot.name
+                sale_order_line['batch_id'] = prod_lot.id
+                sale_order_line['expiry_date'] = life_date and life_date.strftime('%d/%m/%Y')
+
+            sale_order_line_obj.create(cr, uid, sale_order_line, context=context)
+
+            sale_order = self.pool.get('sale.order').browse(cr, uid, sale_order.id, context=context)
+
+            if product_uom_qty != order['quantity']:
+                order['quantity'] = order['quantity'] - product_uom_qty
+                self._create_sale_order_line_function(cr, uid, name, sale_order, order, context=context)
+
 class sale_order(osv.osv):
     _inherit = 'sale.order'
     

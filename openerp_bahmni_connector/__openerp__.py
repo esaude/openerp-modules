@@ -10,7 +10,7 @@
     """,
     'author':'Satvix Informatics',
     'website':'https://www.satvix.com/',
-    'depends':['base','product','bahmni_sale_discount'],
+    'depends':['base','product','bahmni_sale_discount','poc_medication_dispensed'],
     'data': [
         "config_data.xml",
         "oe_bahmni_config_view.xml",
