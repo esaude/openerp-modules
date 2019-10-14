@@ -22,6 +22,7 @@
         'purchase',
         'mail',
         'stock',
+        'bahmni_customer_payment',
         ],
     'data': ["add_invoice_print_button.xml"],
     'js': [],
