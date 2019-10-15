@@ -644,12 +644,12 @@ class module(osv.osv):
                 # Sales Order
                 sales_order_id = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Sales Order')], context=context)
                 if sales_order_id:
-                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescrições Dispensada',tuple(sales_order_id)))
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Ordem de prescrição',tuple(sales_order_id)))
 
                 #Sales Order "
                 sales_order_str = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Sales Order ')], context=context)
                 if sales_order_str:
-                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Prescrições Dispensada',tuple(sales_order_str)))
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id in %s', ('Ordem de prescrição',tuple(sales_order_str)))
 
                 #sales
                 sales_menu = self.pool.get('ir.translation').search(cr, uid, [('lang','=','pt_PT'),('src','=','Sales')], context=context)
@@ -685,6 +685,46 @@ class module(osv.osv):
                                                                 ('description','=','Invoice paid'),('name','=','Paid')], context=context)
                 if invoice_paid_message:
                     cr.execute('UPDATE mail_message_subtype set description=%s WHERE id in %s', ('Dispensa de medicação',tuple(invoice_paid_message)))
+                
+                #Confirm Sale button
+                confirm_sale = self.pool.get('ir.translation').search(cr, uid, [('module','=','sale'),
+                                                                ('type','=','view'),
+                                                                ('name','=','sale.order'),
+                                                                ('lang','=','pt_PT'),
+                                                                ('src','=','Confirm Sale')], context=context)
+                if confirm_sale:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Confirmar Dispensa',tuple(confirm_sale)))
+
+                #View Delivery Order
+                view_delivery = self.pool.get('ir.translation').search(cr, uid, [('module','=','sale_stock'),
+                                                                ('type','=','view'),
+                                                                ('name','=','sale.order'),
+                                                                ('lang','=','pt_PT'),
+                                                                ('src','=','View Delivery Order')], context=context)
+                if view_delivery:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Ordem de dispensa',tuple(view_delivery)))
+
+
+                #View Invoice
+                view_invoice = self.pool.get('ir.translation').search(cr, uid, [('module','=','sale'),
+                                                                ('type','=','view'),
+                                                                ('name','=','sale.order'),
+                                                                ('lang','=','pt_PT'),
+                                                                ('src','=','View Invoice')], context=context)
+                if view_invoice:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('ver prescrição',tuple(view_invoice)))
+
+                #Quotations and Sales
+                qt = self.pool.get('ir.translation').search(cr, uid, [('module','=','sale'),
+                                                                ('type','=','model'),
+                                                                ('name','=','ir.actions.act_window,name'),
+                                                                ('lang','=','pt_PT'),
+                                                                ('src','=','Quotations and Sales')], context=context)
+                if qt:
+                    cr.execute('UPDATE ir_translation set value=%s WHERE id=%s', ('Prescrições e Dispensas',tuple(qt)))
+
+
+
                     
 
 

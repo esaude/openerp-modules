@@ -400,3 +400,39 @@ msgstr "Produzido por"
 msgid "Balance"
 msgstr "Saldo"
 
+#. module: sale
+#: view:sale.order:0
+msgid "Confirm Sale"
+msgstr "Confirmar Dispensa"
+
+#. module: bahmni_customer_payment
+#: field:account.voucher,balance_before_pay:0
+msgid "Amount Due"
+msgstr "Valor a pagar"
+
+
+#. module: bahmni_customer_payment
+#: field:account.voucher,balance_amount:0
+msgid "Total Balance"
+msgstr "Saldo a pagar"
+
+#. module: sale_stock
+#: view:sale.order:0
+msgid "View Delivery Order"
+msgstr "Ordem de dispensa"
+
+#. module: sale
+#: view:sale.order:0
+msgid "View Invoice"
+msgstr "ver prescrição"
+
+#. module: sale
+#: model:ir.actions.act_window,name:sale.act_res_partner_2_sale_order
+#: view:res.partner:0
+msgid "Quotations and Sales"
+msgstr "Prescrições e Dispensas"
+
+#. module: sale
+#: view:sale.order:0
+msgid "Sales Order "
+msgstr "Ordem de prescrição"
