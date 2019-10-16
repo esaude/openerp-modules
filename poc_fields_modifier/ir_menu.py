@@ -22,7 +22,7 @@ class sale_order(osv.osv):
 class ir_ui_menu(osv.osv):
     _inherit = 'ir.ui.menu'
 
-    def search(self, cr, uid, args, offset=0, limit=None, order=None, context=None, count=False):
+    '''def search(self, cr, uid, args, offset=0, limit=None, order=None, context=None, count=False):
         menu_ids = []
         accounting_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'account', 'menu_finance')[1]
         if accounting_id:
@@ -37,7 +37,7 @@ class ir_ui_menu(osv.osv):
         if menu_ids and len(menu_ids) > 0:
             args.append('!')
             args.append(('id', 'child_of', menu_ids))
-        return super(ir_ui_menu, self).search(cr, uid, args, offset=offset, limit=limit, order=order, context=context, count=count)
+        return super(ir_ui_menu, self).search(cr, uid, args, offset=offset, limit=limit, order=order, context=context, count=count)'''
 
 class product_category(osv.osv):
     _inherit = "product.category"
