@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data>
+        
+        <!--Hide fields from Quotation and Sale Order Form View-->
+        <record id="sale_form_add_batch_price_hide_fields_poc" model="ir.ui.view">
+            <field name="name">sale.order.hide.prev.outstanding.poc</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="bahmni_sale_discount.sale_form_add_batch_price"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='prev_amount_outstanding']" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+			    <xpath expr="//field[@name='total_outstanding']" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+			    <xpath expr="//field[@name='partner_village']" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+			    <xpath expr="//field[@name='care_setting']" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
+        <!--Hide Shop field from Sale and Quotation form view-->
+        <record id="view_order_form_inherit_hide_fields_poc" model="ir.ui.view">
+            <field name="name">sale.order.hide.visit.sale.order</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='shop_id']" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+			    <xpath expr="//sheet/h1/label[1]" position="attributes">
+				    <attribute name="attrs">{'invisible': ['|',('name','=',' '),('state','not in',('draft','sent'))]}</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
+        
+        <record id="view_sale_order_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+                <tree string="Quotation" fonts="bold:message_unread==True" colors="grey:state=='cancel';blue:state in ('waiting_date','manual');red:state in ('invoice_except','shipping_except')">
+                    <field name="message_unread" invisible="1"/>
+                    <field name="name" string="Order Number"/>
+                    <field name="datetime_order" string="Date Time of Lifting"/>
+                    <field name="partner_id"/>
+                    <field name="provider_name"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="amount_total" sum="Total Tax Included" invisible="1"/>
+                    <field name="state" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_sale_order_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state','in',('draft','sent','cancel'))]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation, the first step of a new sale.
+              </p><p>
+                OpenERP will help you handle efficiently the complete sale flow:
+                from the quotation to the sales order, the
+                delivery, the invoicing and the payment collection.
+              </p><p>
+                The social feature helps you organize discussions on each sales
+                order, and allow your customers to keep track of the evolution
+                of the sales order.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_sale_order_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Orders" fonts="bold:message_unread==True" colors="grey:state=='cancel';blue:state in ('waiting_date','manual');red:state in ('invoice_except','shipping_except')">
+                    <field name="message_unread" invisible="1"/>
+                    <field name="name" string="Order Number"/>
+                    <field name="datetime_order" string="Date Time of Lifting"/>
+                    <field name="partner_id"/>
+                    <field name="provider_name"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="amount_total" sum="Total Tax Included" invisible="1"/>
+                    <field name="state" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="sale.action_orders" model="ir.actions.act_window">
+            <field name="name">Sales Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_sale_order_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="context">{}</field>
+            <field name="domain">[('state','not in',('draft','sent','cancel'))]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation that can be converted into a sales
+                order.
+              </p><p>
+                OpenERP will help you efficiently handle the complete sales flow:
+                quotation, sales order, delivery, invoicing and payment.
+              </p>
+            </field>
+        </record>
+        
+        <!--Hide Print button from the Customer Payment View-->
+        <record id="jss_invoice_form_add_discount_hidebutton2" model="ir.ui.view">
+            <field name="name">account.voucher.receipt.form.hidebutton2</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="bahmni_print_bill.jss_invoice_form_add_discount"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
+        <!--Hide Print button from the Customer Payment View-->
+        <record id="jss_invoice_form_add_discount_hidebutton1" model="ir.ui.view">
+            <field name="name">account.voucher.receipt.form.hidebutton1</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="print_receipt.jss_invoice_form_add_discount"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='voucher_print']" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
+        <!--Hide Unreconcile button from the Customer Payment View-->
+        <record id="view_vendor_receipt_form_hide_button" model="ir.ui.view">
+            <field name="name">account.voucher.receipt.form.hidebutton</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_receipt_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[2]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+			    <xpath expr="//header/button[3]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
+        <!--Hide Ruppes Currency Symbol from Customer Invoice-->
+        <record id="invoice_form_add_discount_hideruppes" model="ir.ui.view">
+            <field name="name">account.invoice.form.hideruppes</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="bahmni_sale_discount.invoice_form_add_discount"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[3]/span[1]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+			    <xpath expr="//div[4]/span[1]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
+        <!--Hide Ruppes Currency Symbol from Supplier Invoice-->
+        <record id="view_account_invoice_discount_form_hideruppes" model="ir.ui.view">
+            <field name="name">account.invoice.form.hideruppes</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="bahmni_sale_discount.view_account_invoice_discount_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[3]/span[1]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+			    <xpath expr="//div[4]/span[1]" position="attributes">
+				    <attribute name="invisible">1</attribute>
+			    </xpath>
+            </field>
+        </record>
+        
+        <!-- Invoicing,Human Resources and Messaging menu access right -->
+        <menuitem name="Invoicing"
+            id="account.menu_finance"
+            groups="base.group_system"
+            sequence="50"/>
+            
+        <menuitem name="Human Resources"
+            id="hr.menu_hr_root"
+            groups="base.group_system"
+            sequence="90"/>
+            
+        <menuitem name="Messaging"
+          id="mail.mail_feeds_main"
+          groups="base.group_system"
+          sequence="10"/>
+        
+        
+    </data>
+</openerp>
+
+
+

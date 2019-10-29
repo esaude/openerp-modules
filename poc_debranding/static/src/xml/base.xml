@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template" xml:space="preserve">
+
+<t t-name="Login">
+    <div class="oe_login">
+        <div><img class="oe_login_flag" src='/web/static/src/img/flag_of_mozambique.png'/></div>
+        <div class="oe_login_text">
+         <p>REPÚBLICA DE MOÇAMBIQUE</p>
+         <p>MINISTÉRIO DA SAÚDE</p>
+         <p>SISTEMA ELETRÓNICO DE SEGUIMENTO DE PACIENTES EM TEMPO REAL (SESP-TR)</p>
+         </div>
+        <div class="oe_login_bottom">
+            <div class="power-by">
+                <img class="oe_login_bahmniLogo" src='/web/static/src/img/bahmniLogo.png'/> <span class="oe_login_Gov_Ver">Bahmni</span>
+                <a class="oe_login_Gov" href="http://www.misau.gov.mz/"> Ministério da Saúde (MISAU)</a> O nosso maior valor é a vida. <span class="oe_login_Gov_Ver">Versão:2.0.0</span>
+            </div>
+        </div>
+        <div class="oe_login_error_message"/>
+        <div class="oe_login_pane">
+            <!-- <div class="oe_login_logo"><img src='/web/static/src/img/logo2.png'/></div> -->
+            <form action="" method="post">
+                <div class="oe_login_dbpane" >
+                    Database:
+                    <input name="db" t-att-value="widget.selected_db || ''"/>
+                </div>
+                <ul>
+                    <li>Nome do Utilizador </li>
+                    <li><input name="login" type="text" t-att-value="widget.selected_login || ''" autofocus="autofocus"/></li>
+                    <li>Senha </li>
+                    <li><input name="password" type="password" t-att-value="widget.selected_password || ''"/></li>
+                    <li><button name="submit">Entrar</button></li>
+                </ul>
+            </form>
+            <div class="oe_login_footer">
+                <a href="#" class="oe_login_manage_db">Gestão das BDs</a> |
+                <a href="http://www.openerp.com" target="_blank">Distribuído Por <span>OpenERP</span></a>
+            </div>
+        </div>
+    </div>
+</t>
+
+
+
+
+
+</templates>

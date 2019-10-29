@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="bahmni_host" model="ir.config_parameter">
+            <field name="key">Host</field>
+            <field name="value">127.0.0.1</field>
+        </record>
+        <record id="bahmni_database" model="ir.config_parameter">
+            <field name="key">Database</field>
+            <field name="value">openmrs</field>
+        </record>
+        <record id="bahmni_username" model="ir.config_parameter">
+            <field name="key">Username</field>
+            <field name="value">root</field>
+        </record>
+        <record id="bahmni_password" model="ir.config_parameter">
+            <field name="key">Password</field>
+            <field name="value">password</field>
+        </record>
+        <record id="bahmni_port" model="ir.config_parameter">
+            <field name="key">Port</field>
+            <field name="value">3306</field>
+        </record>
+    </data>
+</openerp>

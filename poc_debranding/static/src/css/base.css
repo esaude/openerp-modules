@@ -1,0 +1,124 @@
+@charset "utf-8";
+@font-face {
+  font-family: "mnmliconsRegular";
+  src: url("/web/static/src/font/mnmliconsv21-webfont.eot") format("eot");
+  src: url("/web/static/src/font/mnmliconsv21-webfont.woff") format("woff");
+  src: url("/web/static/src/font/mnmliconsv21-webfont.ttf") format("truetype");
+  src: url("/web/static/src/font/mnmliconsv21-webfont.svg") format("svg") active;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "EntypoRegular";
+  src: url("/web/static/src/font/entypo-webfont.eot") format("eot");
+  src: url("/web/static/src/font/entypo-webfont.eot?#iefix") format("embedded-opentype");
+  src: url("/web/static/src/font/entypo-webfont.woff") format("woff");
+  src: url("/web/static/src/font/entypo-webfont.ttf") format("truetype");
+  src: url("/web/static/src/font/entypo-webfont.svg") format("svg") active;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.openerp .oe_login .oe_login_pane {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  margin: -160px -166px;
+  border: solid 1px #333333;
+  background: #1e1e1e;
+  background: rgba(30, 30, 30, 0.94);
+  padding: 22px 32px;
+  color: #eeeeee;
+  text-align: left;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  -moz-box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+  -webkit-box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+}
+.openerp .oe_login .oe_login_pane h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+.oe_login_text{
+  color: #669999;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 0.2;
+  font-family: "OpenSans", Arial, sans-serif;
+  padding-top: 7px;
+}
+.oe_login_Gov{
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+.oe_login_Gov_Ver{
+  font-family: "OpenSans", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+.oe_login_flag{
+  padding-top: 7px;
+  max-width: 200px;
+  max-height: 90px;
+}
+.oe_login_bahmniLogo{
+  max-width: 18px;
+}
+.power-by {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  padding-bottom: 5px;
+  font-size: 12px;
+  color: #eeeeee;
+}
+.oe_login_text{   
+  color: #669999;   
+  font-weight: bold;    
+  font-size: 22px;    
+  line-height: 0.2;   
+  font-family: "OpenSans", Arial, sans-serif;   
+  padding-top: 7px;   
+}   
+.oe_login_Gov{    
+  text-decoration: none !important;   
+  cursor: pointer !important;   
+}   
+.oe_login_Gov_Ver{    
+  font-family: "OpenSans", Arial, sans-serif;   
+  font-weight: bold;    
+  font-size: 12px;    
+}   
+.oe_login_flag{   
+  padding-top: 7px;   
+  max-width: 200px;   
+  max-height: 90px;   
+}   
+.oe_login_bahmniLogo{   
+  max-width: 18px;    
+}   
+.power-by {   
+  position: fixed;    
+  width: 100%;    
+  bottom: 0;    
+  text-align: center;   
+  padding-bottom: 5px;    
+  font-size: 12px;    
+  color: #eeeeee;   
+}
+  .openerp .oe_login .oe_login_footer a {   .openerp .oe_login .oe_login_footer a {
+  color: #eeeeee;     color: #eeeeee;
+  margin: 0 8px;      margin: 0 8px;
+  font-size : 14px !important;    
+}   }
+.openerp .oe_login .oe_login_footer a:hover {   .openerp .oe_login .oe_login_footer a:hover {
+  text-decoration: underline;     text-decoration: underline;
+}   }
+.openerp .oe_login .oe_login_footer span {    .openerp .oe_login .oe_login_footer span {
+  font-weight: bold;      font-weight: bold;
+  font-size: 15px;      font-size: 16px;
+}

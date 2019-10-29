@@ -1,0 +1,438 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130301-002301\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-29 08:08+0000\n"
+"PO-Revision-Date: 2019-07-29 08:08+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mail
+#: model:ir.ui.menu,name:mail.mail_feeds
+#: model:ir.ui.menu,name:mail.mail_feeds_main
+msgid "Messaging"
+msgstr "Mensagens"
+
+#. module: bahmni_sale_discount
+#: report:sale.order.sale_order_ext:0
+msgid "Provider Name :"
+msgstr "Provedor :"
+
+
+#. module: bahmni_sale_discount
+#: field:sale.order,provider_name:0
+msgid "Provider Name"
+msgstr "Nome do Provedor"
+
+#. module: bahmni_stock_batch_sale_price
+#: view:sale.order:0
+#: field:stock.move.split.lines,product_uom:0
+msgid "Unit"
+msgstr "Unidade"
+
+#. module: bahmni_stock_batch_sale_price
+#: field:account.invoice.line,expiry_date:0
+#: field:sale.order.line,expiry_date:0
+msgid "Expiry Date"
+msgstr "​Data de Validade"
+
+#. module: bahmni_stock_batch_sale_price
+#: field:account.invoice.line,batch_name:0
+#: field:sale.order.line,batch_id:0
+#: field:sale.order.line,batch_name:0
+msgid "Batch No"
+msgstr "Num. Lote"
+
+#. module: sale
+#: field:sale.order.line,price_subtotal:0
+msgid "Subtotal"
+msgstr "Sub Total"
+
+#. module: sale_stock
+#: model:ir.actions.act_window,name:sale_stock.action_turn_around_time_report
+#: model:ir.ui.menu,name:sale_stock.menu_sub_sales_menuitem
+msgid "Turn Around Time Report"
+msgstr "Relatório do Tempo de Resposta"
+
+#. module: sale_stock
+#: model:ir.actions.act_window,name:sale_stock.action_average_turn_around_time_report
+#: model:ir.ui.menu,name:sale_stock.menu_sub_average_sales_menuitem
+msgid "Average Turn Around Time Report"
+msgstr "Tempo Médio de Resposta/Retorno"
+
+#. module: bahmni_atom_feed
+#: model:ir.actions.act_window,name:bahmni_atom_feed.action_order_type_shop_mapping
+#: model:ir.ui.menu,name:bahmni_atom_feed.menu_action_order_type_shop_mapping
+msgid "Order Type - Shop mapping"
+msgstr "Tipo de Encomenda"
+
+#. module: bahmni_atom_feed
+#: field:order.type.shop.map,order_type:0
+msgid "Order Type"
+msgstr "Tipo de Ordem"
+
+#. module: bahmni_atom_feed
+#: field:order.type.shop.map,shop_id:0
+msgid "Shop"
+msgstr "Loja"
+
+#. module: bahmni_atom_feed
+#: field:order.type.shop.map,local_shop_id:0
+msgid "Local Shop"
+msgstr "Loja Local"
+
+#. module: bahmni_atom_feed
+#: field:order.type.shop.map,location_name:0
+msgid "Location Name"
+msgstr "Nome de Localização"
+
+
+#. module: bahmni_atom_feed
+#: model:ir.actions.act_window,name:bahmni_atom_feed.action_syncable_units_mapping
+#: model:ir.ui.menu,name:bahmni_atom_feed.menu_action_syncable_units_mapping
+msgid "Units to be Synced"
+msgstr "Unidade por sincronizar"
+
+#. module: bahmni_atom_feed
+#: field:syncable.units,name:0
+msgid "Units Name"
+msgstr "Nome de Unidades"
+
+#. module: product
+#: model:ir.actions.act_window,name:product.product_uom_categ_form_action
+#: model:ir.ui.menu,name:product.menu_product_uom_categ_form_action
+msgid "Unit of Measure Categories"
+msgstr "Unidades de Medida de Categorias"
+
+#. module: bahmni_print_bill
+#. openerp-web
+#: code:addons/bahmni_print_bill/static/src/xml/print.xml:6
+#, python-format
+msgid "Summarized Bill"
+msgstr "Resumo Resumido"
+
+#. module: purchase
+#: view:purchase.order:0
+msgid "Send by EMail"
+msgstr "Envio Por Email"
+
+#. module: purchase
+#: view:purchase.order:0
+msgid "Confirm Order"
+msgstr "Confirmar Encomenda"
+
+#. module: purchase
+#: field:purchase.order,warehouse_id:0
+#: field:stock.picking.in,warehouse_id:0
+msgid "Destination Warehouse"
+msgstr "Armazém de destino"
+
+#. module: bahmni_purchase_extension
+#: view:purchase.order:0
+msgid "Unit"
+msgstr "Unidade"
+
+#. module: purchase
+#: model:ir.actions.act_window,name:purchase.action_invoice_pending
+#: model:ir.ui.menu,name:purchase.menu_procurement_management_pending_invoice
+msgid "On Draft Invoices"
+msgstr "Em facturas rascunho"
+
+#. module: purchase
+#: model:ir.actions.act_window,name:purchase.purchase_line_form_action2
+#: model:ir.ui.menu,name:purchase.menu_purchase_line_order_draft
+msgid "On Purchase Order Lines"
+msgstr "Em fila de ordem de compra"
+
+#. module: purchase
+#: model:ir.actions.act_window,name:purchase.action_picking_tree4_picking_to_invoice
+#: model:ir.ui.menu,name:purchase.menu_action_picking_tree4_picking_to_invoice
+msgid "On Incoming Shipments"
+msgstr "Em remessas recebidas"
+
+#. module: purchase
+#: view:purchase.order:0
+msgid "Customer Address"
+msgstr "​Endereço do Cliente"
+
+#. module: purchase
+#: field:purchase.order,invoiced:0
+msgid "Invoice Received"
+msgstr "Factura Recebida"
+
+#. module: purchase
+#: field:purchase.order,payment_term_id:0
+msgid "Payment Term"
+msgstr "Termo de Pagamento"
+
+#. module: purchase
+#: view:purchase.order:0
+msgid "Receive Invoice"
+msgstr "Receber Factura"
+
+#. module: purchase
+#: view:purchase.order:0
+msgid "Purchase Order "
+msgstr "Pedido de Compra"
+
+#. module: purchase
+#: view:purchase.order:0
+msgid "Request for Quotation "
+msgstr "Pedido de cotação "
+
+#. module: stock
+#: code:addons/stock/wizard/stock_partial_picking.py:95
+#, python-format
+msgid "_Receive"
+msgstr "Receber"
+
+#. module: base
+#: code:addons/base/res/res_company.py:163 selection:ir.actions.server,state:0
+#: model:ir.ui.menu,name:base.menu_email field:res.bank,email:0
+#: field:res.company,email:0 field:res.partner,email:0
+#, python-format
+msgid "Email"
+msgstr "Correio Electrónico"
+
+#. module: account
+#: field:res.partner,property_payment_term:0
+msgid "Customer Payment Term"
+msgstr "Prazo  de Pagamento do Cliente"
+
+#. module: account
+#: field:res.partner,property_supplier_payment_term:0
+msgid "Supplier Payment Term"
+msgstr "Prazo de Pagamento do Fornecedor"
+
+
+#. module: stock
+#: field:stock.picking,date:0
+#: field:stock.picking.in,date:0
+#: field:stock.picking.out,date:0
+msgid "Time"
+msgstr "Tempo"
+
+#. module: purchase
+#: model:ir.ui.menu,name:purchase.menu_procurement_management_inventory
+#: model:process.node,name:purchase.process_node_packinglist0
+#: model:process.node,name:purchase.process_node_productrecept0
+msgid "Incoming Products"
+msgstr "Produtos recebidos"
+
+#. module: account
+#: field:account.invoice,supplier_invoice_number:0
+msgid "Supplier Invoice Number"
+msgstr "Número da Factura do Fornecedor"
+
+#. module: account
+#: field:account.invoice,reference_type:0
+msgid "Payment Reference"
+msgstr "Referência do Pagamento"
+
+#. module: account
+#: field:account.invoice,amount_untaxed:0
+msgid "New Charges"
+msgstr "Montante sem imposto"
+
+#. module: bahmni_sale_discount
+#: field:account.invoice,discount_method:0
+msgid "Discount Method"
+msgstr "Forma de desconto"
+
+#. module: bahmni_sale_discount
+#: field:account.invoice,discount:0
+#: field:sale.order,calculated_discount:0
+msgid "Discount Amount"
+msgstr "Valor de desconto"
+
+#. module: bahmni_sale_discount
+#: field:account.invoice,round_off:0
+#: field:sale.order,round_off:0
+msgid "Amount Round off"
+msgstr "Valor arredondado"
+
+#. module: stock
+#: field:stock.picking,auto_picking:0
+#: field:stock.picking.in,auto_picking:0
+#: field:stock.picking.out,auto_picking:0
+msgid "Auto-Picking"
+msgstr "Escolha automática"
+
+#. module: stock
+#: view:stock.picking.in:0
+msgid "Date of Reception"
+msgstr "Data da recepção"
+
+#. module: procurement
+#: view:product.product:0
+msgid "Request Procurement"
+msgstr "Solicitar aquisição"
+
+#. module: procurement
+#: model:ir.actions.act_window,name:procurement.product_open_orderpoint
+#: view:product.product:0
+msgid "Orderpoints"
+msgstr "Pontos de ordem"
+
+#. module: product
+#: view:product.product:0
+msgid "Inventory"
+msgstr "Inventário"
+
+#. module: product
+#: view:product.product:0
+msgid "Sales"
+msgstr "Vendas"
+
+#. module: bahmni_pharmacy_product
+#: field:product.product,drug:0
+msgid "Drug Name"
+msgstr "Nome do medicamento"
+
+#. module: bahmni_pharmacy_product
+#: field:product.product,manufacturer:0
+msgid "Manufacturer"
+msgstr "Fabricação"
+
+#. module: procurement
+#: field:product.template,supply_method:0
+msgid "Supply Method"
+msgstr "Métodos de Fornecimento"
+
+#. module: product
+#: view:product.product:0
+msgid "Purchase"
+msgstr "Compra"
+
+#. module: product
+#: view:product.product:0
+msgid "Suppliers"
+msgstr "Fornecedor"
+
+#. module: bahmni_purchase_extension
+#: field:pricelist.partnerinfo,unit_price:0
+#: field:product.supplierinfo,unit_price:0
+#: report:purchase.purchase_order_ext:0
+msgid "Unit Price"
+msgstr "Preço Unitário"
+
+#. module: product
+#: view:product.product:0
+msgid "Description for Suppliers"
+msgstr "Descrição para Fornecedores"
+
+#. module: purchase
+#: view:product.product:0
+#: field:product.template,purchase_ok:0
+msgid "Can be Purchased"
+msgstr "Pode ser comprado"
+
+#. module: product
+#: field:product.product,outgoing_qty:0
+msgid "Outgoing"
+msgstr "Saída"
+
+#. module: product
+#: field:product.product,virtual_available:0
+msgid "Forecasted Quantity"
+msgstr "Quantidade Prevista"
+
+#. module: stock
+#: field:product.template,loc_case:0
+msgid "Case"
+msgstr "Caso"
+
+#. module: product
+#: view:product.product:0
+msgid "Sale Conditions"
+msgstr "Condições de venda"
+
+#. module: stock
+#: field:product.template,sale_delay:0
+msgid "Customer Lead Time"
+msgstr "Prazo de execução do cliente"
+
+#. module: product
+#: view:product.product:0
+msgid "Description for Quotations"
+msgstr "Descrição para Cotações"
+
+#. module: openerp_bahmni_connector
+#: field:product.category,is_arv:0
+msgid "ARV Category"
+msgstr "ARV Categoria"
+
+#. module: stock
+#: view:product.category:0
+msgid "Account Stock Properties"
+msgstr "Propriedades da conta de stock"
+
+
+#. module: bahmni_sale_discount
+#: field:account.invoice,discount_acc_id:0
+#: view:sale.order:0
+#: field:sale.order,discount_acc_id:0
+msgid "Discount Account Head"
+msgstr "Chefe da conta de desconto"
+
+#. module: bahmni_sale_discount
+#: field:sale.order,discount_percentage:0
+msgid "Discount %"
+msgstr "Desconto (%)"
+
+
+#. module: bahmni_purchase_extension
+#: field:product.supplierinfo,manufacturer:0
+#: field:purchase.order.line,manufacturer:0
+#: report:purchase.purchase_order_ext:0
+msgid "Manufacturer"
+msgstr "Produzido por"
+
+#. module: bahmni_internal_stock_move
+#: field:stock.move,stock_available:0
+msgid "Balance"
+msgstr "Saldo"
+
+#. module: sale
+#: view:sale.order:0
+msgid "Confirm Sale"
+msgstr "Confirmar Dispensa"
+
+#. module: bahmni_customer_payment
+#: field:account.voucher,balance_before_pay:0
+msgid "Amount Due"
+msgstr "Valor a pagar"
+
+
+#. module: bahmni_customer_payment
+#: field:account.voucher,balance_amount:0
+msgid "Total Balance"
+msgstr "Saldo a pagar"
+
+#. module: sale_stock
+#: view:sale.order:0
+msgid "View Delivery Order"
+msgstr "Ordem de dispensa"
+
+#. module: sale
+#: view:sale.order:0
+msgid "View Invoice"
+msgstr "ver prescrição"
+
+#. module: sale
+#: model:ir.actions.act_window,name:sale.act_res_partner_2_sale_order
+#: view:res.partner:0
+msgid "Quotations and Sales"
+msgstr "Prescrições e Dispensas"
+
+#. module: sale
+#: view:sale.order:0
+msgid "Sales Order "
+msgstr "Ordem de prescrição"
