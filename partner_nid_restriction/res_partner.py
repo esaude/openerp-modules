@@ -38,6 +38,7 @@ class res_partner(osv.osv):
     def create(self, cr, uid, vals, context=None):
         result = super(res_partner, self).create(cr, uid, vals, context=context)
         partner_obj = self.browse(cr,uid,result,context=context)
+        """
         if partner_obj.ref:
             ref_data = partner_obj.ref.split('/')
             if len(ref_data) == 4:
@@ -51,10 +52,12 @@ class res_partner(osv.osv):
                 
             else:
                 raise osv.except_osv(_('Error!'), _('NID format is invalid !'))
+        """
         return result
         
     
     def write(self, cr, uid, ids, vals, context=None):
+        """
         if vals.has_key('ref') and vals.get('ref'):
             ref_data = vals.get('ref').split('/')
             if len(ref_data) == 4:
@@ -68,6 +71,7 @@ class res_partner(osv.osv):
 
             else:
                 raise osv.except_osv(_('Error!'), _('NID format is invalid !'))
+        """
         return super(res_partner, self).write(cr, uid, ids, vals, context=context)
 
         
