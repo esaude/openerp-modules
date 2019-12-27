@@ -5,7 +5,7 @@
 
 <t t-name="Login">
     <div class="oe_login">
-        <div><img class="oe_login_flag" src='/web/static/src/img/flag_of_mozambique.png'/></div>
+        <div><img class="oe_login_flag" src='/poc_debranding/static/src/img/flag_of_mozambique.png'/></div>
         <div class="oe_login_text">
          <p>REPÚBLICA DE MOÇAMBIQUE</p>
          <p>MINISTÉRIO DA SAÚDE</p>
@@ -13,7 +13,7 @@
          </div>
         <div class="oe_login_bottom">
             <div class="power-by">
-                <img class="oe_login_bahmniLogo" src='/web/static/src/img/bahmniLogo.png'/> <span class="oe_login_Gov_Ver">Bahmni</span>
+                <img class="oe_login_bahmniLogo" src='/poc_debranding/static/src/img/bahmniLogo.png'/> <span class="oe_login_Gov_Ver">Bahmni</span>
                 <a class="oe_login_Gov" href="http://www.misau.gov.mz/"> Ministério da Saúde (MISAU)</a> O nosso maior valor é a vida. <span class="oe_login_Gov_Ver">Versão:2.0.0</span>
             </div>
         </div>
