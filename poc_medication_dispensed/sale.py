@@ -16,7 +16,7 @@ class sale_order_line(osv.osv):
     _inherit = 'sale.order.line'
     
     _columns = {
-        'quantity_total': fields.float('Quantity Total'),
+	'quantity_total': fields.float('Quantity Total', digits_compute= dp.get_precision('Product UoS')),
         'category_id': fields.related('product_id','categ_id',type='many2one',relation='product.category',string='Category', store=True, readonly=True),
     }
 
